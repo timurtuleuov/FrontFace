@@ -5,7 +5,12 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: theme => ({
+        'brand-back': "url('src/assets/img/brand-back.jpg')",
+        
+      })
+    },
   },
   plugins: [],
 }

@@ -7,6 +7,9 @@ import { HeaderComponent } from './component/header/header.component';
 import { BrandSectionComponent } from './component/brand-section/brand-section.component';
 import { PriceSectionComponent } from './component/price-section/price-section.component';
 import { FaqSectionComponent } from './component/faq-section/faq-section.component';
+import { DesqSectionComponent } from './component/desq-section/desq-section.component';
+import { FreeTrialSectionComponent } from './component/free-trial-section/free-trial-section.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { FaqSectionComponent } from './component/faq-section/faq-section.compone
     HeaderComponent,
     BrandSectionComponent,
     PriceSectionComponent,
-    FaqSectionComponent
+    FaqSectionComponent,
+    DesqSectionComponent,
+    FreeTrialSectionComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
