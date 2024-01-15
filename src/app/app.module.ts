@@ -10,6 +10,7 @@ import { FaqSectionComponent } from './component/faq-section/faq-section.compone
 import { DesqSectionComponent } from './component/desq-section/desq-section.component';
 import { FreeTrialSectionComponent } from './component/free-trial-section/free-trial-section.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { CardViewComponent } from './component/card-view/card-view.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './component/footer/footer.component';
     FaqSectionComponent,
     DesqSectionComponent,
     FreeTrialSectionComponent,
-    FooterComponent
+    FooterComponent,
+    CardViewComponent
   ],
   imports: [
     BrowserModule,
