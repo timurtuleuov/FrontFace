@@ -1,11 +1,14 @@
-<section class="bg-white dark:bg-gray-900 pt-10 " >
-    <div class="grid  max-w-screen-xl px-6 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
-        <div class="mr-auto place-self-center lg:col-span-7">
-            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Unmasking Reality <br/> <span style="background: linear-gradient(to left, rgb(184, 150, 255) 32.5px, rgb(0, 246, 255) 91px, rgb(0, 255, 240) 100%);
+<section class="{{ isNight ? 'bg-gray-900' : 'bg-white' }} pt-10" [ngClass]="{'dark': isNight}">
+    <div class="grid  max-w-screen-xl px-6 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28 dark:bg-gray-900">
+        <div [ngClass]="{'dark': isNight}" class="mr-auto place-self-center lg:col-span-7">
+            <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Unmasking Reality <br/> 
+            <span style="background: linear-gradient(to left, rgb(184, 150, 255) 32.5px, rgb(0, 246, 255) 91px, rgb(0, 255, 240) 100%);
                 -webkit-background-clip: text;
                 color: transparent;">AI</span>-Powered Truth <span style="background: linear-gradient(to left, rgb(184, 150, 255) 32.5px, rgb(0, 246, 255) 91px, rgb(0, 255, 240) 100%);
                 -webkit-background-clip: text;
-                color: transparent;">Detection</span></h1>
+                color: transparent;">
+                Detection
+                </span></h1>
             <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
                 Proudly delivering groundbreaking solutions aimed at addressing the most complex challenges in security and image processing, we offer more than just access to advanced technologies. With us, you become a part of the digital era's transformation, where your security and visual experience take center stage.
             </p>
