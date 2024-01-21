@@ -11,6 +11,9 @@ import { DesqSectionComponent } from './component/desq-section/desq-section.comp
 import { FreeTrialSectionComponent } from './component/free-trial-section/free-trial-section.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { CardViewComponent } from './component/card-view/card-view.component';
+import { HomeComponent } from './component/screens/home/home.component';
+import { AuthComponent } from './component/auth/auth.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { CardViewComponent } from './component/card-view/card-view.component';
     DesqSectionComponent,
     FreeTrialSectionComponent,
     FooterComponent,
-    CardViewComponent
+    CardViewComponent,
+    HomeComponent,
+    AuthComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
