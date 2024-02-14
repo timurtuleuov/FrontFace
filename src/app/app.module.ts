@@ -13,7 +13,8 @@ import { FooterComponent } from './component/footer/footer.component';
 import { CardViewComponent } from './component/card-view/card-view.component';
 import { HomeComponent } from './component/screens/home/home.component';
 import { AuthComponent } from './component/auth/auth.component';
-import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,15 @@ import { SignUpComponent } from './component/sign-up/sign-up.component';
     CardViewComponent,
     HomeComponent,
     AuthComponent,
-    SignUpComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxMaskDirective, 
+    NgxMaskPipe
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
