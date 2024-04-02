@@ -15,6 +15,7 @@ import { HomeComponent } from './component/screens/home/home.component';
 import { AuthComponent } from './component/auth/auth.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
+import { FileLoadComponent } from './component/file-load/file-load.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CommonModule } from '@angular/common';
     CardViewComponent,
     HomeComponent,
     AuthComponent,
+    FileLoadComponent
   ],
   imports: [
     CommonModule,
