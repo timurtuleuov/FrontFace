@@ -17,6 +17,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
 import { FileLoadComponent } from './component/file-load/file-load.component';
 import { SignInComponent } from './component/sign-in/sign-in.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SignInComponent } from './component/sign-in/sign-in.component';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     NgxMaskDirective, 

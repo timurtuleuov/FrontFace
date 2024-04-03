@@ -13,7 +13,6 @@ export class DesqSectionComponent implements OnInit{
   ngOnInit(): void {
   this.nightMode.value$.subscribe((newValue) => {
     this.isNight = newValue
-    console.log(this.isNight)
   })
   }
 }

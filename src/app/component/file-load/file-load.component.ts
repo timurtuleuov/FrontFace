@@ -9,11 +9,20 @@ import { NightmodeService } from 'src/app/service/nightmode.service';
 export class FileLoadComponent {
   public isNight: boolean = false
   
+  currentInput: any;
+
+  onFileSelected(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files.length > 0) {
+        console.log(target.files[0].name);
+    }
+}
   constructor(private nightMode: NightmodeService){}
   ngOnInit(): void {
   this.nightMode.value$.subscribe((newValue) => {
     this.isNight = newValue
-    console.log(this.isNight)
   })
   }
+
+  
 }
