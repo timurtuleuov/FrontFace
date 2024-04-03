@@ -16,6 +16,7 @@ import { AuthComponent } from './component/auth/auth.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
 import { FileLoadComponent } from './component/file-load/file-load.component';
+import { SignInComponent } from './component/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FileLoadComponent } from './component/file-load/file-load.component';
     CardViewComponent,
     HomeComponent,
     AuthComponent,
-    FileLoadComponent
+    FileLoadComponent,
+    SignInComponent
   ],
   imports: [
     CommonModule,
