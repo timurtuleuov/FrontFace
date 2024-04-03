@@ -17,15 +17,24 @@
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                     <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                 </div>
-                <input [(ngModel)]="currentInput"
+                <input 
                 (change)="onFileSelected($event)" id="dropzone-file" type="file" class="hidden" />
             </label>
         </div> 
         
     </div>
     <!-- User's files -->
-    <div class="w-full items-center text-center  mx-auto lg:gap-8">
+    <div class="w-1/2 items-center text-center  mx-auto lg:gap-8" *ngIf="files.length > 0">
         You have loaded: 
+        <ul>
+            <li *ngFor="let image of images; index as i">
+                <div class="flex flex-row items-center justify-center">
+                    <img [src]="image" alt="Loaded Image" style="max-width: 30px; max-height: 30px;">
+                    {{files[i]}}
+                </div>
+              
+            </li>
+          </ul>
     </div>
 
 </section>
