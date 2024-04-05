@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
+import { ResultPresentComponent } from './component/result-present/result-present.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     AuthComponent,
     FileLoadComponent,
-    SignInComponent
+    SignInComponent,
+    ResultPresentComponent
   ],
   imports: [
     CommonModule,
