@@ -18,7 +18,8 @@ import { CommonModule } from '@angular/common';
 import { FileLoadComponent } from './component/file-load/file-load.component';
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { FormsModule } from '@angular/forms';
-
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +42,11 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     NgxMaskDirective, 
-    NgxMaskPipe
+    NgxMaskPipe,
+    MatIconModule
+    
   ],
-  providers: [provideNgxMask()],
+  providers: [provideNgxMask(), provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

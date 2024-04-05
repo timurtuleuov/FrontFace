@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NightmodeService } from 'src/app/service/nightmode.service';
-
+import {FileItem} from 'src/app/interface/file-item.interface';
 @Component({
   selector: 'app-file-load',
   templateUrl: './file-load.component.html',
@@ -9,22 +9,31 @@ import { NightmodeService } from 'src/app/service/nightmode.service';
 export class FileLoadComponent {
   public isNight: boolean = false
   
-  files: string[] = [] 
-  images: string[] = [];
+  fileItems: FileItem[] = [];
 
 
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
-    if (target.files && target.files.length > 0) {
-        console.log(target.files[0].name);
-        this.files.push(target.files[0].name)
-
-        const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.images.push(e.target.result); // Добавляем URL в массив изображений
-      };
-      reader.readAsDataURL(target.files[0]); // Чтение файла как Data URL
+    if (this.fileItems.length == 3) {
+      console.log("Limit of images is 3")
     }
+    if (target.files && target.files.length > 0 && this.fileItems.length < 3) {
+      const file = target.files[0];
+      console.log(file.name);
+
+      // Создаем URL для загруженного изображения
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const fileItem: FileItem = {
+          id: this.fileItems.length + 1, // Простой способ генерации ID
+          filename: file.name,
+          image: e.target.result
+        };
+        this.fileItems.push(fileItem); // Добавляем объект в массив
+      };
+      reader.readAsDataURL(file); // Чтение файла как Data URL
+    }
+  
     
 }
   constructor(private nightMode: NightmodeService){}
@@ -33,6 +42,10 @@ export class FileLoadComponent {
     this.isNight = newValue
   })
   }
+  deleteItem(index: number) {
+    this.fileItems.splice(index, 1);
+  }
+  
 
   
 }

@@ -24,13 +24,16 @@
         
     </div>
     <!-- User's files -->
-    <div class="w-1/2 items-center text-center  mx-auto lg:gap-8" *ngIf="files.length > 0">
+    <div class="w-1/2 items-center text-center  mx-auto lg:gap-12  dark:text-white" *ngIf="fileItems.length > 0">
         You have loaded: 
         <ul>
-            <li *ngFor="let image of images; index as i">
-                <div class="flex flex-row items-center justify-center">
-                    <img [src]="image" alt="Loaded Image" style="max-width: 30px; max-height: 30px;">
-                    {{files[i]}}
+            <li *ngFor="let file of fileItems; index as i">
+                <div class="flex flex-row items-center  m-2 justify-center">
+                    <img [src]="file.image" alt="Loaded Image" class="mr-2" style="max-width: 100px; max-height: 100px;">
+                    {{file.filename}}
+                    <button (click)="deleteItem(i)" color="warn" class="flex justify-center">
+                        <mat-icon>delete_forever</mat-icon>
+                      </button>
                 </div>
               
             </li>
