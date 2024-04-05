@@ -32,8 +32,25 @@
                             </g>
                         </g>
                     </svg>
+                    <!-- Random Phrase -->
                     
                 </div>
+                <div class="flex justify-center items-center text-center mt-20">
+                    <h4 class="justify-center items-center mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-3xl dark:text-white">
+                        <ng-container *ngFor="let word of currentPhrase.split(' '); let i = index">
+                            <ng-container *ngIf="i === 1 && word.length >= 3">
+                                <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">{{ word }}</mark>
+                            </ng-container>
+                            <ng-container *ngIf="i !== 1">
+                                {{ word }}
+                            </ng-container>
+                            <span *ngIf="i !== currentPhrase.split(' ').length - 1"> </span>
+                        </ng-container>
+                    </h4>
+                </div>
+                
+                
+                    
         
     </div>
 
