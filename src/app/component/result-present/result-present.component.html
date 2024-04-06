@@ -2,7 +2,7 @@
     
 
 
-    <div class="flex flex-col items-center justify-center max-w-screen-xl px-6 pt-16 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16  lg:pt-28 dark:bg-gray-900">
+    <div class="flex flex-col items-center h-screen justify-center max-w-screen-xl px-6 pt-5  mx-auto lg:gap-8 xl:gap-0 lg:py-16  lg:pt-10 dark:bg-gray-900">
         <div class="flex items-center justify-center w-full lg:col-span-3 dark:bg-gray-900"></div>
                 <!-- Loader -->
                 <div>
@@ -40,6 +40,9 @@
                         <ng-container *ngFor="let word of currentPhrase.split(' '); let i = index">
                             <ng-container *ngIf="i === 1 && word.length >= 3">
                                 <mark class="px-2 text-white bg-blue-600 rounded dark:bg-blue-500">{{ word }}</mark>
+                            </ng-container>
+                            <ng-container *ngIf="i === 1 && word.length < 3">
+                                {{ word }}
                             </ng-container>
                             <ng-container *ngIf="i !== 1">
                                 {{ word }}
