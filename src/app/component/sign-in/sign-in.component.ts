@@ -64,7 +64,7 @@ export class SignInComponent implements OnInit{
         console.log("You successfuly loged in!!!")
         const userData = jwtDecode<TokenDecode>(result.token);
         console.log(userData)
-        
+          this.cookieService.set('user-id', userData.id.toString())
           this.cookieService.set('token', result.token);
         
           this.cookieService.set('user-name', userData.sub);
