@@ -4,11 +4,12 @@
         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">We invest in the world’s potential</h1>
     </div>
 
-    <div class="grid  max-w-screen-xl px-6 pt-10 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-8 lg:pt-28 dark:bg-gray-900">
-<div class="flex items-center justify-center w-full lg:col-span-2 dark:bg-gray-900"></div>
+    <div class="grid  max-w-screen-xl px-6 pt-10 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-2 lg:pt-15 dark:bg-gray-900">
+<!-- <div class="flex items-center justify-center w-full lg:col-span-2 dark:bg-gray-900"></div> -->
         <!-- File Input -->
-        <div class="flex items-center justify-center w-full lg:col-span-4 dark:bg-gray-900">
-            
+        
+        <div class="items-center justify-center w-full lg:col-span-1 dark:bg-gray-900 text-center">
+            <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">File Input</p>
             <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
                     <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -21,14 +22,16 @@
                 (change)="onFileSelected($event)" id="dropzone-file" type="file" class="hidden" />
             </label>
         </div> 
-        
-    </div>
-    <!-- User's files -->
-    <div class="w-1/2 items-center text-center  mx-auto lg:gap-12  dark:text-white" *ngIf="fileItems.length > 0">
-        You have loaded: 
-        <ul>
+        <!-- User's files -->
+        <div class="w-full lg:col-span-1 items-center text-center  mx-auto lg:gap-12  dark:text-white" *ngIf="fileItems.length == 0">
+            <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Your Files</p>
+            
+        </div>
+    <div class="w-full lg:col-span-1 items-center text-center  mx-auto lg:gap-12  dark:text-white" *ngIf="fileItems.length > 0">
+        <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">You have loaded:</p>
+        <ul class="flex flex-col justify-center">
             <li *ngFor="let file of fileItems; index as i">
-                <div class="flex flex-row items-center  m-2 justify-center">
+                <div class="flex flex-row ml-10  m-2 justify-start">
                     <img [src]="file.image" alt="Loaded Image" class="mr-2" style="max-width: 100px; max-height: 100px;">
                     {{file.filename}}
                     <button (click)="deleteItem(i)" color="warn" class="flex justify-center">
@@ -38,6 +41,11 @@
               
             </li>
           </ul>
+          <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" *ngIf="fileItems.length > 1">Load Images</button>
+          <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" *ngIf="fileItems.length == 1">Load Image</button>
     </div>
+    </div>
+    
+    
 
 </section>
