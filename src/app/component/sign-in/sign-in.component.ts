@@ -7,6 +7,11 @@ import { TokenDecode } from 'src/app/interface/token-decode.interface';
 import { User } from 'src/app/interface/user.interface';
 import { AuthService } from 'src/app/service/auth.service';
 import { NightmodeService } from 'src/app/service/nightmode.service';
+// import {
+//   SocialAuthService,
+//   GoogleLoginProvider,
+//   SocialUser,
+// } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,34 +21,59 @@ import { NightmodeService } from 'src/app/service/nightmode.service';
 export class SignInComponent implements OnInit{ 
   registrationForm!: FormGroup;
   myUser!: User;
+  // socialUser!: SocialUser;
+  // isLoggedin?: boolean;
   public isNight: boolean = false
+  name: any;
   
   constructor(private nightMode: NightmodeService, private fb: FormBuilder, 
-    private auth: AuthService, private cookieService: CookieService, private router: Router){}
+    private auth: AuthService, private cookieService: CookieService, private router: Router,
+     private authService: AuthService){}
   ngOnInit(): void {
+    this.name = this.cookieService.get("user-name")
+    if (this.name) {
+      this.router.navigate(['/']);
+    }
   this.nightMode.value$.subscribe((newValue) => {
     this.isNight = newValue
-  })
+  }
+
+)
   this.registrationForm = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]]
   });
+ 
   }
+  loginWithGoogle(): any{
+    this.authService.loginWithGoogle().subscribe(
+      (response) => {
+        console.log(response)
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
+    // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+    //   .then(() => this.router.navigate(['/']));
+  }
+
   onSubmit() {
     this.auth.getToken(this.registrationForm.value.username, this.registrationForm.value.password).subscribe(
       (result) => {
         console.log("You successfuly loged in!!!")
         const userData = jwtDecode<TokenDecode>(result.token);
         console.log(userData)
-        if (this.myUser && this.myUser.token) {
+        
           this.cookieService.set('token', result.token);
-        }
+        
           this.cookieService.set('user-name', userData.sub);
           this.cookieService.set('user-email', userData.email);
-          this.router.navigate(['/']);
+          
+          window.location.reload();
+          
       }
       
     )
-    console.log(this.registrationForm.value);
   }
 }

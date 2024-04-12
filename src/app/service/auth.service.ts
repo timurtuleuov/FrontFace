@@ -8,6 +8,10 @@ import { jwtDecode } from "jwt-decode";
   providedIn: 'root'
 })
 export class AuthService {
+  private googleAuthUrl = 'https://localhost/oauth2/code/google';
+  loginWithGoogle(): Observable<any> {
+    return this.http.get<any>(this.googleAuthUrl);
+  }
   url = 'http://localhost:8080/'
 
   constructor(private http: HttpClient) { }

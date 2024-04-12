@@ -22,7 +22,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultPresentComponent } from './component/result-present/result-present.component';
-
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+} from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import {  GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +56,25 @@ import { ResultPresentComponent } from './component/result-present/result-presen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    GoogleSigninButtonModule,
+    MatMenuModule
     
   ],
-  providers: [provideNgxMask(), provideAnimationsAsync()],
+  providers: [provideNgxMask(), 
+    provideAnimationsAsync(),
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('336358859654-m1ftcicfpgmreq5pd58q6239vn0bao5g.apps.googleusercontent.com'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

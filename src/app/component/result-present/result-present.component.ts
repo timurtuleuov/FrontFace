@@ -26,7 +26,7 @@ export class ResultPresentComponent implements OnInit{
   ];
   currentPhrase: string = '';
   public isNight: boolean = false
-  images: string[] = ['../../../assets/img/logo.png', '../../../assets/img/logo.png', '../../../assets/img/logo.png']
+  images: string[] = ['../../../assets/img/logo.png']
   constructor(private nightMode: NightmodeService){}
   ngOnInit(): void {
     this.currentPhrase = this.getRandomPhrase();
