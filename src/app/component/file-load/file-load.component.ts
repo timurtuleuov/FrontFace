@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NightmodeService } from 'src/app/service/nightmode.service';
 import {FileItem} from 'src/app/interface/file-item.interface';
 import { NeuralNetworkService} from 'src/app/service/neural-network-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-file-load',
   templateUrl: './file-load.component.html',
@@ -20,11 +21,7 @@ export class FileLoadComponent {
     }
     if (target.files && target.files.length > 0 && this.fileItems.length < 3) {
       const file = target.files[0];
-      console.log(file);
-      this.nnService.sendImage(file).subscribe(
-            (result) => console.log(result),
-            (error) => console.log(error)
-          );
+      
         
       
     
@@ -45,7 +42,7 @@ export class FileLoadComponent {
     }
   }
   
-  constructor(private nightMode: NightmodeService, private nnService: NeuralNetworkService) {}
+  constructor(private nightMode: NightmodeService, private nnService: NeuralNetworkService, private router: Router) {}
 
   ngOnInit(): void {
     this.nightMode.value$.subscribe((newValue) => {
@@ -60,14 +57,15 @@ export class FileLoadComponent {
   }
   
   uploadImage(){
-    console.log("start of work");
-    this.files.forEach(file => {
-      console.log(file);
-      this.nnService.sendImage(file).subscribe(
-        (result) => console.log(result),
-        (error) => console.log(error)
-      );
-    });
+    this.router.navigate(['/present-result'], { state: { files: this.files } })
+    // console.log("start of work");
+    // this.files.forEach(file => {
+    //   console.log(file);
+    //   this.nnService.sendImage(file).subscribe(
+    //     (result) => console.log(result),
+    //     (error) => console.log(error)
+    //   );
+    // });
   }
 }
 

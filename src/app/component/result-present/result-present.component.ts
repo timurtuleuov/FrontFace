@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PredictionResponse } from 'src/app/interface/prediction-response.interface';
+import { NeuralNetworkService } from 'src/app/service/neural-network-service.service';
 import { NightmodeService } from 'src/app/service/nightmode.service';
 
 @Component({
@@ -26,13 +29,36 @@ export class ResultPresentComponent implements OnInit{
   ];
   currentPhrase: string = '';
   public isNight: boolean = false
-  images: string[] = ['../../../assets/img/logo.png']
-  constructor(private nightMode: NightmodeService){}
+  images: any[] = [];
+  results: PredictionResponse[] = []
+  constructor(private nightMode: NightmodeService, private nnService: NeuralNetworkService, private route: ActivatedRoute){}
+  isLoaded: boolean = false
   ngOnInit(): void {
     this.currentPhrase = this.getRandomPhrase();
     setInterval(() => {
       this.currentPhrase = this.getRandomPhrase();
     }, 10000);
+    this.route.paramMap.subscribe(params => {
+      const state = window.history.state;
+      if (state && state.files) {
+        this.images = state.files;
+        console.log("start of work");
+        this.images.forEach(file => {
+          console.log(file);
+          this.nnService.sendImage(file).subscribe(
+            (result) => {
+              if (result && typeof result === 'object') {
+                this.results.push(result); 
+              } else {
+                console.error("Result is not an object:", result);
+              }
+              this.isLoaded = true;
+            },
+            (error) => console.log(error)
+          );
+        });
+      }
+    });
     
     
   this.nightMode.value$.subscribe((newValue) => {
