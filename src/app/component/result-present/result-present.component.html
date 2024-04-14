@@ -54,19 +54,19 @@
                 </div> 
                 <div #result class="pt-14 pb-14"   *ngIf="isLoaded">
                     
-                            <div class="max-w-lg rounded  shadow-lg pt-10" *ngFor="let result of results; index as i">
+                            <div class="max-w-lg rounded-lg  shadow-lg dark:shadow-gray-800  dark:bg-gray-800" *ngFor="let result of results; index as i">
                                 <img class="w-full" src="data:image/jpeg;base64,{{ result.image}}">
-                                <div class="px-6 py-4">
+                                <div class="px-6 py-4 dark:text-white">
                                   <div class="font-bold text-xl mb-2">Photo number {{i+1}}</div>
-                                  <p class="text-gray-700 text-base">
+                                  <p class="text-gray-700 text-base dark:text-white">
                                     <span *ngIf="result.prediction[1] > result.prediction[0]">No deepfake</span>
                                     <span *ngIf="result.prediction[0] > result.prediction[1]">Deepfake</span>
                                     with probability {{ result.prediction[result.prediction[0] > result.prediction[1] ? 0 : 1] * 100}}%
                                   </p>
                                 </div>
                                 <div class="px-6 pt-4 pb-2">
-                                  <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" *ngIf="result.prediction[1] > result.prediction[0]">#no_deepfake</span>
-                                  <span class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" *ngIf="result.prediction[0] > result.prediction[1]">#deepfake</span>
+                                  <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 dark:text-white dark:bg-green-500" *ngIf="result.prediction[1] > result.prediction[0]">#no_deepfake</span>
+                                  <span class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 dark:text-white dark:bg-red-500" *ngIf="result.prediction[0] > result.prediction[1]">#deepfake</span>
                                 </div>
                               </div>
                      
