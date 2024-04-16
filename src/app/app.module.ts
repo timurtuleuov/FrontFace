@@ -29,6 +29,7 @@ import {
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import {  GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import {MatMenuModule} from '@angular/material/menu';
+import { HistoryComponent } from './component/history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import {MatMenuModule} from '@angular/material/menu';
     AuthComponent,
     FileLoadComponent,
     SignInComponent,
-    ResultPresentComponent
+    ResultPresentComponent,
+    HistoryComponent
   ],
   imports: [
     CommonModule,

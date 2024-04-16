@@ -5,6 +5,7 @@ import { AuthComponent } from './component/auth/auth.component';
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { FileLoadComponent } from './component/file-load/file-load.component';
 import { ResultPresentComponent } from './component/result-present/result-present.component';
+import { HistoryComponent } from './component/history/history.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent},
   { path: 'sign-in', component: SignInComponent},
   { path: 'load-file', component: FileLoadComponent},
-  { path: 'present-result', component: ResultPresentComponent}
+  { path: 'present-result', component: ResultPresentComponent},
+  { path: 'history', component: HistoryComponent}
 ];
 
 @NgModule({

@@ -7,10 +7,12 @@ import { NightmodeService } from 'src/app/service/nightmode.service';
   styleUrls: ['./brand-section.component.css']
 })
 export class BrandSectionComponent implements OnInit{ 
-  public isNight: boolean = false
+  public isNight!: boolean
   
   constructor(private nightMode: NightmodeService){}
   ngOnInit(): void {
+    const darkModeValue = localStorage.getItem('dark');
+    this.isNight = darkModeValue === 'true';
   this.nightMode.value$.subscribe((newValue) => {
     this.isNight = newValue
   })

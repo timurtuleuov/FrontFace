@@ -34,9 +34,9 @@ export class SignInComponent implements OnInit{
     if (this.name) {
       this.router.navigate(['/']);
     }
-  this.nightMode.value$.subscribe((newValue) => {
-    this.isNight = newValue
-  }
+    this.nightMode.value$.subscribe((newValue) => {
+      this.isNight = newValue
+    }
 
 )
   this.registrationForm = this.fb.group({

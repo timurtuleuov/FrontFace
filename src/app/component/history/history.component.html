@@ -1,0 +1,36 @@
+<section class="{{ isNight ? 'bg-gray-900' : 'bg-white' }} pt-10 z-0" [ngClass]="{'dark': isNight}">
+    <div class="flex  flex-col items-center " *ngFor="let item of data">
+
+        <!-- Item #1 -->
+        <div class="relative pl-8 sm:pl-32 py-6 group ">
+            <!-- Purple label -->
+            <div class="font-caveat font-medium text-2xl text-indigo-500 mb-1 sm:mb-0">Was checked by DeepFace</div>
+            <!-- Vertical line (::before) ~ Date ~ Title ~ Circle marker (::after) -->
+            <div class="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-indigo-600 after:border-4 after:box-content after:border-slate-50 after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
+                <time class="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-emerald-600 bg-emerald-100 dark:bg-emerald-600 rounded-full dark:text-white">{{item.responseDate | date}}</time>
+                
+            </div>
+            <!-- Content -->
+            <div class="max-w-lg rounded-lg  shadow-lg dark:shadow-gray-800 mb-10  dark:bg-gray-800">
+                <img class="w-full" src="data:image/jpeg;base64,{{ item.data}}">
+                <div class="px-6 py-4 dark:text-white">
+                  <div class="font-bold text-xl mb-2">Photo ID {{item.id}}</div>
+                  <p class="text-gray-700 text-base dark:text-white">
+                    <span *ngIf="item.prediction[1] > item.prediction[0]">No deepfake</span>
+                    <span *ngIf="item.prediction[0] > item.prediction[1]">Deepfake</span>
+                    with probability {{ item.prediction[item.prediction[0] > item.prediction[1] ? 0 : 1] * 100}}%
+                  </p>
+                </div>
+                <div class="px-6 pt-4 pb-2">
+                  <span class="inline-block bg-green-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 dark:text-white dark:bg-green-500" *ngIf="item.prediction[1] > item.prediction[0]">#no_deepfake</span>
+                  <span class="inline-block bg-red-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 dark:text-white dark:bg-red-500" *ngIf="item.prediction[0] > item.prediction[1]">#deepfake</span>
+                </div>
+              </div> 
+        </div>
+        
+        
+        
+    
+    </div> 
+
+</section>

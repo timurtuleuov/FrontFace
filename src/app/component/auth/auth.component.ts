@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthComponent implements OnInit{ 
   registrationForm!: FormGroup;
-  public isNight: boolean = false
+  public isNight!: boolean
   
   constructor(private nightMode: NightmodeService, private fb: FormBuilder, private authService: AuthService,
     private router: Router, private route: ActivatedRoute, private cookieService: CookieService){}
@@ -23,6 +23,8 @@ export class AuthComponent implements OnInit{
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
+    const darkModeValue = localStorage.getItem('dark');
+    this.isNight = darkModeValue === 'true';
   this.nightMode.value$.subscribe((newValue) => {
     this.isNight = newValue
   })

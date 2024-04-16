@@ -12,15 +12,18 @@ export interface PredictionResponse {
 export class NeuralNetworkService {
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
-
+  getHistory(): Observable<any>{
+    const userId = this.cookieService.get('user-id');
+    return this.http.get<any>(`http://localhost:8080/model/history?userId=${userId}`);
+  }
   sendImage(file: File): Observable<any> {
-  let formParams = new FormData();
-  formParams.append('file', file)
-  
-  const userId = this.cookieService.get('user-id');
-  console.log(formParams)
+    let formParams = new FormData();
+    formParams.append('file', file)
+    const userId = this.cookieService.get('user-id');
+    
+    console.log(formParams)
 
-  // Отправляем запрос на сервер с файлом и ID пользователя
-  return this.http.post<any>(`http://localhost:8080/model/upload?userId=${userId}`, formParams);
+    // Отправляем запрос на сервер с файлом и ID пользователя
+    return this.http.post<any>(`http://localhost:8080/model/upload?userId=${userId}`, formParams);
   }
 }

@@ -1,4 +1,4 @@
-<header [ngClass]="{'dark': isNight}" class="fixed w-full bg-white">
+<header [ngClass]="{'dark': isNight}" class="fixed w-full z-10 bg-white">
     <nav [ngClass]="{'dark': isNight}" class="bg-dark border-gray-200 py-2.5 dark:bg-gray-900">
         <div [ngClass]="{'dark': isNight}" class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
             <a href="#" class="flex items-center">
@@ -47,7 +47,7 @@
                     <button id="needReload"  routerLink="/auth" class="flex-1 justify-center font-bold text-base dark:bg-gray-900 dark:text-white bg-white px-6 py-1 rounded-xl " *ngIf="!auth">Auth</button>
                     <button [matMenuTriggerFor]="menu"   class="flex-1 justify-center font-bold text-base dark:bg-gray-900 dark:text-white bg-white px-6 py-1 rounded-xl " *ngIf="auth">{{name}}</button>
                     <mat-menu #menu="matMenu">
-                        <button routerLink="/user" mat-menu-item>
+                        <button routerLink="/history" mat-menu-item>
                           <mat-icon>account_circle</mat-icon>
                           <span>My history</span>
                         </button>
