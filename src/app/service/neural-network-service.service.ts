@@ -22,8 +22,9 @@ export class NeuralNetworkService {
     const userId = this.cookieService.get('user-id');
     
     console.log(formParams)
-
-    // Отправляем запрос на сервер с файлом и ID пользователя
     return this.http.post<any>(`http://localhost:8080/model/upload?userId=${userId}`, formParams);
   }
 }
+
+
+
