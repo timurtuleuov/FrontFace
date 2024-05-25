@@ -13,16 +13,16 @@ export class NeuralNetworkService {
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
   getHistory(): Observable<any>{
-    const userId = this.cookieService.get('user-id');
-    return this.http.get<any>(`http://localhost:8080/model/history?userId=${userId}`);
+    const userId = this.cookieService.get('user-name');
+    return this.http.get<any>(`http://localhost:8080/model/history?userName=${userId}`);
   }
   sendImage(file: File): Observable<any> {
     let formParams = new FormData();
     formParams.append('file', file)
-    const userId = this.cookieService.get('user-id');
+    const userId = this.cookieService.get('user-name');
     
     console.log(formParams)
-    return this.http.post<any>(`http://localhost:8080/model/upload?userId=${userId}`, formParams);
+    return this.http.post<any>(`http://localhost:8080/model/upload?userName=${userId}`, formParams);
   }
 }
 
